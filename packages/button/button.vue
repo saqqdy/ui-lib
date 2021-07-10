@@ -5,6 +5,7 @@
 	</button>
 </template>
 <script>
+import { nextIndex } from 'ui-lib-demo/packages/utils/nextIndex';
 export default {
 	name: 'WlButton',
 	props: {
@@ -14,7 +15,9 @@ export default {
 	data() {
 		return {};
 	},
-	created() {},
+	created() {
+		nextIndex();
+	},
 	methods: {},
 };
 </script>
