@@ -1,4 +1,5 @@
 // import '../src/css/theme.less';
+import pkg from '../package.json';
 import Box from './box';
 import Button from './button';
 
@@ -26,6 +27,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
+	version: pkg.version,
+	author: pkg.author.name,
 	install,
 	Box,
 	Button,

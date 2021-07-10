@@ -28,7 +28,7 @@ module.exports = {
 		filename: 'ui-lib-demo.common.js',
 		chunkFilename: '[id].js',
 		libraryExport: 'default',
-		// library: 'UILIBDEMO',
+		library: 'UILIBDEMO',
 		libraryTarget: 'commonjs2',
 		sourceMapFilename: 'ui-lib-demo.common.js.map',
 	},
@@ -55,6 +55,12 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.(jsx?|babel|es6)$/,
+				include: process.cwd(),
+				exclude: config.jsexclude,
+				loader: 'babel-loader',
+			},
+			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				// options: {
@@ -62,12 +68,6 @@ module.exports = {
 				// 		preserveWhitespace: false,
 				// 	},
 				// },
-			},
-			{
-				test: /\.(jsx?|babel|es6)$/,
-				include: process.cwd(),
-				exclude: config.jsexclude,
-				loader: 'babel-loader',
 			},
 			{
 				test: /\.(css|less)$/,
