@@ -23,7 +23,10 @@ module.exports = {
                 camel2DashComponentName: false
             },
             'js-cool'
-        ]
+        ],
+        '@babel/proposal-class-properties',
+        '@babel/plugin-proposal-private-methods',
+        '@babel/transform-runtime'
     ],
     env: {
         utils: {
@@ -43,7 +46,7 @@ module.exports = {
                     {
                         root: ['ui-lib-demo'],
                         alias: {
-                            '@ui-lib-demo': 'ui-lib-demo/lib'
+                            'ui-lib-demo/packages': 'ui-lib-demo/lib'
                         }
                     }
                 ]

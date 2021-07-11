@@ -1,4 +1,6 @@
 const { vue: config } = require('eslint-config-sets')
-module.exports = {
-    ...config
-}
+module.exports = Object.assign(config, {
+    rules: {
+        semi: [2, 'never']
+    }
+})
