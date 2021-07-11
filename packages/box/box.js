@@ -5,16 +5,13 @@ const defaultOpt = {
     title: '提示',
     width: '800px',
     height: '360px',
-    message: null,
-    okBtnName: '确定',
-    cancelBtnName: '取消',
-    defaultMax: false,
-    showOkBtn: true,
-    showCancelBtn: true,
+    confirmName: '确定',
+    cancelName: '取消',
+    showConfirm: true,
+    showCancel: true,
     showClose: true,
     showHeader: true,
-    showBtn: true,
-    showMax: true,
+    showBtns: true,
     template: null
 }
 
@@ -33,13 +30,11 @@ export default function box(opt) {
     Vue.nextTick(() => {
         instance.visible = true
     })
-    if (!opt.isGlobal) {
-        Vue.$plugin.push({
-            name: 'PluginBox',
-            id: instance._uid,
-            instance: instance
-        })
-    }
+    Vue.$plugin.push({
+        name: 'PluginBox',
+        id: instance._uid,
+        instance: instance
+    })
 
     return instance
 }
