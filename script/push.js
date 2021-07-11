@@ -28,7 +28,7 @@ commandSync('git', ['reset', '-q', 'HEAD', '--', 'lib']);
 commandSync('git', ['checkout', '--', 'lib']);
 // commandSync('git', ['clean', '-fd', 'lib']);
 // commandSync('git', ['checkout', '.']);
-commandSync('git', ['commit', '-m', argvs.includes('--deploy') ? `"feature: push version ${version}"` : argvs.length > 0 ? argvs[0] : 'feature: push some changes']);
+commandSync('git', ['commit', '-m', argvs.includes('--deploy') ? `"push version ${version}"` : argvs.length > 0 ? argvs[0] : 'push some changes']);
 commandSync('git', ['push']);
 if (argvs.includes('--deploy')) {
 	let id = commandSync('git', ['rev-list', '--tags', '--max-count', '1']).stdout,
