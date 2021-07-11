@@ -1,40 +1,40 @@
 @import 'common/var.less';
 .wl-button {
-	display: inline-block;
-	padding: 0 20px;
-	line-height: 38px;
-	height: 40px;
-	border: 2px solid #5e80eb;
-	cursor: pointer;
-	border-radius: 4px;
-	box-sizing: border-box;
+    display: inline-block;
+    padding: 0 20px;
+    line-height: 38px;
+    height: 40px;
+    border: 2px solid #5e80eb;
+    cursor: pointer;
+    border-radius: 4px;
+    box-sizing: border-box;
     background: #5e80eb;
     color: #fff;
-	&.disabled {
-		cursor: not-allowed;
-	}
+    &.disabled {
+        cursor: not-allowed;
+    }
 }
 
-.theme(@color){
-    // 当前组件里需要使用皮肤色的样式
-    .wl-button{
-        &.wl-button-default{
-            color: @fontColor;
-            background: #fff;
-            border-color: @borderColor;
-            &:hover{
-                border-color: rgba(@color, 0.6);
-                background-color: rgba(@color, 0.1);
-                color: @color;
-            }
-        }
-    }
-}
-// 通过less的loop循环，根据变量themeList的颜色列表生成
-.loop(@i) when (@i < length(@themeList)+1){
-    .theme-@{i}{
-        .theme(extract(@themeList, @i));
-    }
-    .loop(@i+1);
-}
-.loop(1);
+// .theme(@color){
+//     // 当前组件里需要使用皮肤色的样式
+//     .wl-button{
+//         &.wl-button-default{
+//             color: @fontColor;
+//             background: #fff;
+//             border-color: @borderColor;
+//             &:hover{
+//                 border-color: rgba(@color, 0.6);
+//                 background-color: rgba(@color, 0.1);
+//                 color: @color;
+//             }
+//         }
+//     }
+// }
+// // 通过less的loop循环，根据变量themeList的颜色列表生成
+// .loop(@i) when (@i < length(@themeList)+1){
+//     .theme-@{i}{
+//         .theme(extract(@themeList, @i));
+//     }
+//     .loop(@i+1);
+// }
+// .loop(1);
