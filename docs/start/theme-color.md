@@ -23,10 +23,10 @@ hover 效果即变浅效果，采用设置透明度为 0.8
 ```less
 // less下使用16进制
 .mouse {
-	color: #00d1a0;
-	&:hover {
-		color: rgba(#00d1a0, 0.8);
-	}
+    color: #00d1a0;
+    &:hover {
+        color: rgba(#00d1a0, 0.8);
+    }
 }
 ```
 
@@ -35,7 +35,7 @@ hover 效果即变浅效果，采用设置透明度为 0.8
 ```vue
 // business 业务代码
 <template>
-	<div class="demo">...</div>
+    <div class="demo">...</div>
 </template>
 
 // 换肤设置

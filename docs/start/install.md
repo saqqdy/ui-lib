@@ -17,7 +17,7 @@ npm install -S ui-lib-demo
 
 ```html
 <!-- 引入组件库 -->
-  <script src="https://unpkg.com/ui-lib-demo/lib/index.js"></script>
+<script src="https://unpkg.com/ui-lib-demo/lib/index.js"></script>
 ```
 
 ::: tip

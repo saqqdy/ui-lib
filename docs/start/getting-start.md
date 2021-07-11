@@ -11,15 +11,15 @@
 在 main.js 中写入以下内容：
 
 ```js
-import Vue from 'vue';
-import UILibDemo from 'ui-lib-demo';
-import App from './App.vue';
+import Vue from 'vue'
+import UILibDemo from 'ui-lib-demo'
+import App from './App.vue'
 
-Vue.use(UILibDemo, { zIndex: 5000 });
+Vue.use(UILibDemo, { zIndex: 5000 })
 
 new Vue({
-	render: h => h(App),
-}).$mount('#app');
+    render: h => h(App)
+}).$mount('#app')
 ```
 
 以上代码便完成了 ui-lib-demo 的引入。
@@ -40,15 +40,15 @@ npm install babel-plugin-import -D
 
 ```js
 module.exports = {
-	plugins: [
-		[
-			'import',
-			{
-				libraryName: 'ui-lib-demo',
-			},
-		],
-	],
-};
+    plugins: [
+        [
+            'import',
+            {
+                libraryName: 'ui-lib-demo'
+            }
+        ]
+    ]
+}
 ```
 
 ## 开始使用

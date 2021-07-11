@@ -1,4 +1,4 @@
-const { simple: config } = require('eslint-config-sets');
+const { vue: config } = require('eslint-config-sets')
 module.exports = {
-	...config,
-};
+    ...config
+}

@@ -16,13 +16,13 @@ footer: MIT Licensed | Copyright © 2020-present saqqdy.com
 ---
 
 ```js
-import Vue from 'vue';
-import UILibDemo from 'ui-lib-demo';
-import App from './App.vue';
+import Vue from 'vue'
+import UILibDemo from 'ui-lib-demo'
+import App from './App.vue'
 
-Vue.use(UILibDemo, { zIndex: 5000 });
+Vue.use(UILibDemo, { zIndex: 5000 })
 
 new Vue({
-	render: h => h(App),
-}).$mount('#app');
+    render: h => h(App)
+}).$mount('#app')
 ```

@@ -1,27 +1,27 @@
 {
-	"name": "docs",
-	"version": "1.0.0",
-	"private": false,
-	"scripts": {
-		"docs:dev": "vuepress dev .",
-		"docs:build": "vuepress build ."
-	},
-	"dependencies": {
-		"core-js": "^2.6.12"
-	},
-	"devDependencies": {
-		"@babel/eslint-parser": "^7.12.17",
-		"@vuepress/plugin-back-to-top": "^1.8.2",
-		"@vuepress/plugin-medium-zoom": "^1.8.2",
-		"highlight.js": "^10.6.0",
-		"less": "3.12.2",
-		"less-loader": "7.1.0",
-		"vue-highlight.js": "^3.1.0",
-		"vuepress": "^1.8.2",
-		"vuepress-plugin-container": "^2.1.5",
-		"vuepress-plugin-demo-container": "^0.2.0",
-		"vuepress-plugin-right-anchor": "^0.5.2",
-		"vuepress-plugin-smooth-scroll": "^0.0.10"
-	},
-	"readme": "ERROR: No README data found!"
+    "name": "docs",
+    "version": "1.0.0",
+    "private": false,
+    "scripts": {
+        "docs:dev": "vuepress dev .",
+        "docs:build": "vuepress build ."
+    },
+    "dependencies": {
+        "core-js": "^2.6.12"
+    },
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.12.17",
+        "@vuepress/plugin-back-to-top": "^1.8.2",
+        "@vuepress/plugin-medium-zoom": "^1.8.2",
+        "highlight.js": "^10.6.0",
+        "less": "3.12.2",
+        "less-loader": "7.1.0",
+        "vue-highlight.js": "^3.1.0",
+        "vuepress": "^1.8.2",
+        "vuepress-plugin-container": "^2.1.5",
+        "vuepress-plugin-demo-container": "^0.2.0",
+        "vuepress-plugin-right-anchor": "^0.5.2",
+        "vuepress-plugin-smooth-scroll": "^0.0.10"
+    },
+    "readme": "ERROR: No README data found!"
 }

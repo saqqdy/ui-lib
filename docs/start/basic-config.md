@@ -13,7 +13,7 @@ UILibDemo 的基准 index 值，如果你想配合 element 一起使用，建议
 在 main.js 中写入以下内容：
 
 ```js
-Vue.use(UILibDemo, { zIndex: 5000 });
+Vue.use(UILibDemo, { zIndex: 5000 })
 ```
 
 ## size
