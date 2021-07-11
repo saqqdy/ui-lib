@@ -1,4 +1,4 @@
-// author: saqqdy
+import pkg from '../package.json';
 import Box from './box';
 import Button from './button';
 

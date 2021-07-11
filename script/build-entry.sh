@@ -1,6 +1,6 @@
 dir=$(ls -l ./packages | awk '/^d/ {print $NF}')
 touch packages/index.js
-echo "// author: saqqdy" >packages/index.js
+echo "import pkg from '../package.json';" >packages/index.js
 
 for m in $dir; do
 
