@@ -1,9 +1,6 @@
 dir=$(ls -l ./packages | awk '/^d/ {print $NF}')
-# directive=$(ls -l ./src/directive | awk '/^d/ {print $NF}')
-# filters=$(ls -l ./src/filters | awk '/^d/ {print $NF}')
-# plugins=$(ls -l ./src/plugins | awk '/^d/ {print $NF}')
 touch packages/index.js
-echo "import '../src/css/theme.less';" >packages/index.js
+echo "// author: saqqdy" >packages/index.js
 
 for m in $dir; do
 
@@ -21,13 +18,15 @@ for m in $dir; do
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
 
-    echo "import $first$second from './$m';" >>packages/index.js
+    if [ $m != "utils" ] && [ $m != "style" ]; then
+        echo "import $first$second from './$m';" >>packages/index.js
+    fi
 done
 
 echo "
-import directive from '../src/directive';
-import filters from '../src/filters';
-import plugins from '../src/plugins';
+// import directive from '../src/directive';
+// import filters from '../src/filters';
+// import plugins from '../src/plugins';
 
 const install = function (Vue, opts = {}) {" >>packages/index.js
 
@@ -48,7 +47,8 @@ for m in $dir; do
     second=$(echo $result | cut -c2-)
 
     # -a=与 -o=或 && ||
-    if [ ! -f "./packages/$m/$m.js" ]; then
+    # if [ ! -f "./packages/$m/$m.js" ]; then
+    if [ $m != "utils" ] && [ $m != "style" ]; then
         echo "Vue.component($first$second.name, $first$second);" >>packages/index.js
     fi
 done
@@ -83,9 +83,9 @@ for m in $dir; do
 done
 
 echo "
-Vue.use(directive);
-Vue.use(filters);
-Vue.use(plugins);
+// Vue.use(directive);
+// Vue.use(filters);
+// Vue.use(plugins);
 };" >>packages/index.js
 echo "
 /* istanbul ignore if */
@@ -94,6 +94,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
+    version: pkg.version,
+	author: pkg.author.name,
 	install," >>packages/index.js
 
 for m in $dir; do
@@ -112,7 +114,9 @@ for m in $dir; do
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
 
-    echo "$first$second," >>packages/index.js
+    if [ $m != "utils" ] && [ $m != "style" ]; then
+        echo "$first$second," >>packages/index.js
+    fi
 done
 
 echo "}" >>packages/index.js

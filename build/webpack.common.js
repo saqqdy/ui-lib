@@ -25,12 +25,12 @@ module.exports = {
 	output: {
 		path: path.resolve(process.cwd(), './lib'),
 		publicPath: publicPath,
-		filename: 'ui-lib-demo.common.js',
+		filename: 'index.cmd.js',
 		chunkFilename: '[id].js',
 		libraryExport: 'default',
 		library: 'UILIBDEMO',
 		libraryTarget: 'commonjs2',
-		sourceMapFilename: 'ui-lib-demo.common.js.map',
+		sourceMapFilename: 'index.cmd.js.map',
 	},
 	resolve: {
 		extensions: ['.js', '.vue', '.json'],

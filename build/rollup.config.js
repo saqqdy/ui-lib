@@ -1,62 +1,58 @@
-import vue from 'rollup-plugin-vue'
-import css from 'rollup-plugin-css-only'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
-import esbuild from 'rollup-plugin-esbuild'
-import path from 'path'
-import { getPackagesSync } from '@lerna/project'
-import pkg from '../package.json'
+const fs = require('fs');
+import vue from 'rollup-plugin-vue';
+import css from 'rollup-plugin-css-only';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import esbuild from 'rollup-plugin-esbuild';
+import path from 'path';
+import pkg from '../package.json';
 
-const noElPrefixFile = /(utils|directives|hooks|locale)/
+const components = require('../components.json');
+const deps = Object.keys(pkg.dependencies);
+
+const noWlPrefixFile = /(utils|style|hooks)/;
 const getOutFile = (name, dir = 'lib') => {
-  const compName = name.split('@element-plus/')[1]
-  if (noElPrefixFile.test(name)) {
-    return `${dir}/${compName}/index.js`
-  }
-  return `${dir}/el-${compName}/index.js`
-}
+	const compName = name.split('/')[1];
+	if (noWlPrefixFile.test(name)) {
+		return `${dir}/${compName}.js`;
+	}
+	return `${dir}/${compName}.js`;
+};
 
-const deps = Object.keys(pkg.dependencies)
-const inputs = getPackagesSync()
-  .map(pkg => pkg.name)
-  .filter(name =>
-    name.includes('@element-plus') &&
-    !name.includes('utils'),
-  )
-
-export default inputs.map(name => ({
-  input: path.resolve(__dirname, `../packages/${name.split('@element-plus/')[1]}/index.ts`),
-  output: [{
-    format: 'es',
-    file: getOutFile(name, 'es'),
-    paths(id) {
-      if (/^@element-plus/.test(id)) {
-        if (noElPrefixFile.test(id)) return id.replace('@element-plus', '..')
-        return id.replace('@element-plus/', '../el-')
-      }
-    },
-  }, {
-    format: 'cjs',
-    file: getOutFile(name, 'lib'),
-    exports: 'named',
-    paths(id) {
-      if (/^@element-plus/.test(id)) {
-        if (noElPrefixFile.test(id)) return id.replace('@element-plus', '..')
-        return id.replace('@element-plus/', '../el-')
-      }
-    },
-  }],
-  plugins: [
-    css(),
-    vue({
-      target: 'browser',
-      css: false,
-    }),
-    nodeResolve(),
-    esbuild(),
-  ],
-  external(id) {
-    return /^vue/.test(id)
-      || /^@element-plus/.test(id)
-      || deps.some(k => new RegExp('^' + k).test(id))
-  },
-}))
+export default Object.keys(components).map(key => ({
+	input: path.resolve(__dirname, '../' + components[key]),
+	output: [
+		{
+			format: 'es',
+			file: getOutFile(components[key], 'es'),
+			paths(id) {
+				if (/^ui-lib-demo\/packages/.test(id)) {
+					if (noWlPrefixFile.test(id)) return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/');
+					return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/');
+				}
+			},
+		},
+		{
+			format: 'cjs',
+			file: getOutFile(components[key], 'lib'),
+			exports: 'named',
+			paths(id) {
+				if (/^ui-lib-demo\/packages/.test(id)) {
+					if (noWlPrefixFile.test(id)) return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/');
+					return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/');
+				}
+			},
+		},
+	],
+	plugins: [
+		css(),
+		vue({
+			target: 'browser',
+			css: false,
+		}),
+		nodeResolve(),
+		esbuild(),
+	],
+	external(id) {
+		return /^vue/.test(id) || /^ui-lib-demo/.test(id) || deps.some(k => new RegExp('^' + k).test(id));
+	},
+}));

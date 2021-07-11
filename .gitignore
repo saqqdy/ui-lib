@@ -3,7 +3,8 @@ node_modules
 dist
 *.bak
 /report
-lib
+/lib/
+/es/
 
 *.bak
 *.bak.js

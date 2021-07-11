@@ -17,14 +17,8 @@ for m in $dir; do
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
 
-    touch packages/$m/index.js
-    if [ -f "./packages/$m/$m.js" ]; then
-        fileName="$m.js"
-        echo '
-        import '$first$second' from "'./$fileName'";
-
-        export default '$first$second';' >packages/$m/index.js
-    else
+    if [ $m != "utils" ] && [ $m != "style" ]; then
+        touch packages/$m/index.js
         if [ -f "./packages/$m/$m.vue" ]; then
             fileName="$m.vue"
         elif [ -f "./packages/$m/index.vue" ]; then
@@ -33,20 +27,29 @@ for m in $dir; do
             echo "在 \033[32mpackages/$m\033[0m 目录下没有找到可用的入口文件，请按照规范写代码"
             exit 1
         fi
+
         echo '
-        import '$first$second' from "'./$fileName'";
+        import '$first$second' from "'./$fileName'";' >packages/$m/index.js
+        if [ -f "./packages/$m/$m.js" ]; then
+            echo 'import '$first$second'Plugin from "'./$m.js'";' >>packages/$m/index.js
+        fi
+        echo '
 
         /* istanbul ignore next */
         '$first$second'.install = function (Vue) {
-            Vue.component('$first$second'.name, '$first$second');
+            Vue.component('$first$second'.name, '$first$second');' >>packages/$m/index.js
+        if [ -f "./packages/$m/$m.js" ]; then
+            echo 'Vue.prototype.$'$m' = Vue.$'$m' = '$first$second'Plugin;' >>packages/$m/index.js
+        fi
+        echo '
         };
 
-        export default '$first$second';' >packages/$m/index.js
+        export default '$first$second';' >>packages/$m/index.js
+        npx prettier --write packages/$m/index.js
+
+        echo '"'$m'": "packages/'$m'/index.js",' >>components.json
     fi
 
-    echo '"'$m'": "./packages/'$m'/index.js",' >>components.json
-
-    npx prettier --write packages/$m/index.js
 done
 echo '}' >>components.json
 npx prettier --write components.json

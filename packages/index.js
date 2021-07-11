@@ -1,5 +1,4 @@
-// import '../src/css/theme.less';
-import pkg from '../package.json';
+// author: saqqdy
 import Box from './box';
 import Button from './button';
 
@@ -8,6 +7,7 @@ import Button from './button';
 // import plugins from '../src/plugins';
 
 const install = function (Vue, opts = {}) {
+	Vue.component(Box.name, Box);
 	Vue.component(Button.name, Button);
 
 	Vue.prototype.$UILIBDEMO = {

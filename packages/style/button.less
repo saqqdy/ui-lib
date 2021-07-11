@@ -32,9 +32,9 @@
 }
 // 通过less的loop循环，根据变量themeList的颜色列表生成
 .loop(@i) when (@i < length(@themeList)+1){
-.theme-@{i}{
-    .theme(extract(@themeList, @i));
-}
+    .theme-@{i}{
+        .theme(extract(@themeList, @i));
+    }
     .loop(@i+1);
 }
 .loop(1);

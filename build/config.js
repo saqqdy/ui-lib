@@ -4,14 +4,14 @@ var pkg = require('../package.json');
 var nodeExternals = require('webpack-node-externals');
 var Components = require('../components.json'),
 	utilsList = fs.readdirSync(path.resolve(__dirname, '../packages/utils'));
-	externals = {};
+externals = {};
 
 Object.keys(Components).forEach(function (key) {
 	externals[`ui-lib-demo/packages/${key}`] = `ui-lib-demo/lib/${key}`;
 });
 utilsList.forEach(function (file) {
 	file = path.basename(file, '.js');
-	externals[`ui-lib-demo/packages/utils/${file}`] = `./utils/${file}`;
+	externals[`ui-lib-demo/packages/utils/${file}`] = `ui-lib-demo/lib/${file}`;
 });
 
 externals = [
