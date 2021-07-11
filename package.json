@@ -11,6 +11,7 @@
         "lint": "vue-cli-service lint",
         "build-docs": "sh script/build-docs.sh",
         "docs:deploy": "GH=1 sh script/deploy-docs.sh",
+        "create-module": "sh script/create-module.sh",
         "build-lib": "vue-cli-service build --target lib --name ui-lib-demo --modern --dest lib packages/index.js",
         "build-watch": "vue-cli-service build --target lib --name ui-lib-demo --modern --watch --dest lib packages/index.js",
         "build:utils": "cross-env BABEL_ENV=utils babel packages/utils --out-dir lib/utils --ignore *.test.js",
