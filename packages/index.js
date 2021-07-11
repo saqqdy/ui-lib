@@ -1,4 +1,4 @@
-import { version, author } from '../package.json'
+import { version } from '../package.json'
 import Box from './box'
 import Button from './button'
 
@@ -27,8 +27,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: version,
-    author: author.name,
+    version,
     install,
     Box,
     Button

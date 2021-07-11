@@ -1,6 +1,6 @@
 dir=$(ls -l ./packages | awk '/^d/ {print $NF}')
 touch packages/index.js
-echo "import pkg from '../package.json';" >packages/index.js
+echo "import { version } from '../package.json';" >packages/index.js
 
 for m in $dir; do
 
@@ -94,8 +94,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: pkg.version,
-	author: pkg.author.name,
+    version,
 	install," >>packages/index.js
 
 for m in $dir; do
