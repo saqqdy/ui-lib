@@ -1,7 +1,7 @@
 argvs=($*)
 m=${argvs[0]}
 if [[ $m != '' ]]; then
-    if [[ -d $m ]]; then
+    if [[ -d packages/$m ]]; then
         echo '文件夹已存在，是否覆盖？(请输入数字)'
         echo "\033[33;1m1. 覆盖 \033[0m"
         echo "\033[33;1m2. 取消 \033[0m"
@@ -67,3 +67,4 @@ if [[ $m != '' ]]; then
     npx prettier --write packages/$m/$m.vue
 fi
 npx prettier --write components.json
+sh script/build-entry.sh
