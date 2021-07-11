@@ -4,8 +4,7 @@
 	"private": false,
 	"scripts": {
 		"docs:dev": "vuepress dev .",
-		"docs:build": "vuepress build .",
-		"docs:deploy": "GH=1 sh script/deploy-docs.sh"
+		"docs:build": "vuepress build ."
 	},
 	"dependencies": {
 		"core-js": "^2.6.12"
