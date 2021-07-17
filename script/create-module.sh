@@ -28,8 +28,10 @@ if [[ $m != '' ]]; then
     second=$(echo $result | cut -c2-)
 
     mkdir packages/$m
+    mkdir packages/$m/__tests__
     touch packages/$m/$m.vue
     touch packages/$m/index.js
+    touch packages/$m/__tests__/$m.spec.js
 
     echo '
     import '$first$second' from "'./$m.vue'";
@@ -63,8 +65,25 @@ if [[ $m != '' ]]; then
     }
     </script>' >packages/$m/$m.vue
 
+    echo "
+    /* eslint-disable */
+    import { shallowMount } from '@vue/test-utils'
+    import $first$second from 'ui-lib-demo/packages/$m/$m.vue'
+
+    describe('开始测试 $first$second 组件 /packages/$m/$m.vue', () => {
+        it('这里填写测试的内容', () => {
+            // const type = 'primary'
+            // const wrapper = shallowMount($first$second, {
+            //     propsData: { type }
+            // })
+            // expect(wrapper.text()).toMatch(type)
+            // expect(wrapper.vm.type).toBe(type)
+        })
+    })" >packages/$m/__tests__/$m.spec.js
+
     npx prettier --write packages/$m/index.js
     npx prettier --write packages/$m/$m.vue
+    npx prettier --write packages/$m/__tests__/$m.spec.js
 fi
 npx prettier --write components.json
 sh script/build-entry.sh
