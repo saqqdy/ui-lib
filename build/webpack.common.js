@@ -28,7 +28,7 @@ module.exports = {
         filename: 'index.cmd.js',
         chunkFilename: '[id].js',
         libraryExport: 'default',
-        library: 'UILIBDEMO',
+        library: 'UILIB',
         libraryTarget: 'commonjs2',
         sourceMapFilename: 'index.cmd.js.map'
     },

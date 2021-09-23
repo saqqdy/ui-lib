@@ -1,9 +1,16 @@
+###
+# @Description:
+# @Author: saqqdy
+ # @LastEditors: saqqdy
+# @Date: 2021-07-12 09:33:06
+ # @LastEditTime: 2021-08-17 12:39:04
+###
 dir=$(ls -l ./packages | awk '/^d/ {print $NF}')
 touch packages/index.js
 echo "import { version } from '../package.json';" >packages/index.js
 
 for m in $dir; do
-
+    
     arr=($(echo $m | tr '-' ' '))
     result=''
     for var in ${arr[@]}; do
@@ -11,14 +18,14 @@ for m in $dir; do
         otherLetter=${var:1}
         result=$result$firstLetter$otherLetter
     done
-
+    
     firstResult=$(echo ${result:0:1} | tr '[A-Z]' '[a-z]')
     result=$firstResult${result:1}
-
+    
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
-
-    if [ $m != "utils" ] && [ $m != "style" ]; then
+    
+    if [ $m != "utils" ] && [ $m != "styles" ]; then
         echo "import $first$second from './$m';" >>packages/index.js
     fi
 done
@@ -31,7 +38,7 @@ echo "
 const install = function (Vue, opts = {}) {" >>packages/index.js
 
 for m in $dir; do
-
+    
     arr=($(echo $m | tr '-' ' '))
     result=''
     for var in ${arr[@]}; do
@@ -39,28 +46,28 @@ for m in $dir; do
         otherLetter=${var:1}
         result=$result$firstLetter$otherLetter
     done
-
+    
     firstResult=$(echo ${result:0:1} | tr '[A-Z]' '[a-z]')
     result=$firstResult${result:1}
-
+    
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
-
+    
     # -a=与 -o=或 && ||
     # if [ ! -f "./packages/$m/$m.js" ]; then
-    if [ $m != "utils" ] && [ $m != "style" ]; then
+    if [ $m != "utils" ] && [ $m != "styles" ]; then
         echo "Vue.component($first$second.name, $first$second);" >>packages/index.js
     fi
 done
 
 echo "
-Vue.prototype.\$UILIBDEMO = {
+Vue.prototype.\$UILIB = {
     size: opts.size || '',
     zIndex: opts.zIndex || 5000,
 };" >>packages/index.js
 
 for m in $dir; do
-
+    
     arr=($(echo $m | tr '-' ' '))
     result=''
     for var in ${arr[@]}; do
@@ -68,13 +75,13 @@ for m in $dir; do
         otherLetter=${var:1}
         result=$result$firstLetter$otherLetter
     done
-
+    
     firstResult=$(echo ${result:0:1} | tr '[A-Z]' '[a-z]')
     result=$firstResult${result:1}
-
+    
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
-
+    
     if [ -f "./packages/$m/$m.js" ]; then
         fileName="$m.js"
         # echo "Vue.prototype.\$$result = (...args) => $first$second.apply(Vue.prototype, [Vue, ...args]);" >>packages/index.js
@@ -95,10 +102,10 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
     version,
-	install," >>packages/index.js
+install," >>packages/index.js
 
 for m in $dir; do
-
+    
     arr=($(echo $m | tr '-' ' '))
     result=''
     for var in ${arr[@]}; do
@@ -106,14 +113,14 @@ for m in $dir; do
         otherLetter=${var:1}
         result=$result$firstLetter$otherLetter
     done
-
+    
     firstResult=$(echo ${result:0:1} | tr '[A-Z]' '[a-z]')
     result=$firstResult${result:1}
-
+    
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
-
-    if [ $m != "utils" ] && [ $m != "style" ]; then
+    
+    if [ $m != "utils" ] && [ $m != "styles" ]; then
         echo "$first$second," >>packages/index.js
     fi
 done

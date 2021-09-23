@@ -24,9 +24,9 @@ export default [
             format: 'es',
             file: 'lib/index.esm.js',
             paths(id) {
-                if (/^ui-lib-demo\/packages/.test(id)) {
-                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/')
-                    return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/')
+                if (/^ui-lib\/packages/.test(id)) {
+                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
+                    return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                 }
             }
         },

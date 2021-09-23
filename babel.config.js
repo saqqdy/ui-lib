@@ -44,9 +44,9 @@ module.exports = {
                 [
                     'babel-plugin-module-resolver',
                     {
-                        root: ['ui-lib-demo'],
+                        root: ['ui-lib'],
                         alias: {
-                            'ui-lib-demo/packages': 'ui-lib-demo/lib'
+                            'ui-lib/packages': 'ui-lib/lib'
                         }
                     }
                 ]

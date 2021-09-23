@@ -10,7 +10,7 @@ const install = function (Vue, opts = {}) {
     Vue.component(Box.name, Box)
     Vue.component(Button.name, Button)
 
-    Vue.prototype.$UILIBDEMO = {
+    Vue.prototype.$UILIB = {
         size: opts.size || '',
         zIndex: opts.zIndex || 5000
     }

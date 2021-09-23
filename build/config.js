@@ -7,11 +7,11 @@ var Components = require('../components.json'),
 externals = {}
 
 Object.keys(Components).forEach(function (key) {
-    externals[`ui-lib-demo/packages/${key}`] = `ui-lib-demo/lib/${key}`
+    externals[`ui-lib/packages/${key}`] = `ui-lib/lib/${key}`
 })
 utilsList.forEach(function (file) {
     file = path.basename(file, '.js')
-    externals[`ui-lib-demo/packages/utils/${file}`] = `ui-lib-demo/lib/${file}`
+    externals[`ui-lib/packages/utils/${file}`] = `ui-lib/lib/${file}`
 })
 
 externals = [
@@ -31,7 +31,7 @@ exports.alias = {
     '@': path.resolve(__dirname, '../src'),
     packages: path.resolve(__dirname, '../packages'),
     examples: path.resolve(__dirname, '../examples'),
-    'ui-lib-demo': path.resolve(__dirname, '../')
+    'ui-lib': path.resolve(__dirname, '../')
 }
 
 exports.vue = {
