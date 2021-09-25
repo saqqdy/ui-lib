@@ -41,7 +41,7 @@ module.exports = {
     roots: ['<rootDir>'],
     // 处理 webpack 的别名，比如：将 @ 表示 /src 目录
     moduleNameMapper: {
-        '^ui-lib-demo/(.*)$': '<rootDir>/$1'
+        '^ui-lib/(.*)$': '<rootDir>/$1'
     }
     // snapshotSerializers: ['jest-serializer-vue'] // 将保存的快照测试结果进行序列化，使得其更美观
 }

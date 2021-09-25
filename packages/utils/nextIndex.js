@@ -1,4 +1,4 @@
-import test from 'ui-lib-demo/packages/utils/test'
+import test from 'ui-lib/packages/utils/test'
 
 export function nextIndex() {
     test()

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { shallowMount } from '@vue/test-utils'
-import Button from 'ui-lib-demo/packages/button/button.vue'
+import Button from 'ui-lib/packages/button/button.vue'
 
 describe('开始测试 Button 组件 /packages/button/button.vue', () => {
     it('输入框初始值为空字符串', () => {
