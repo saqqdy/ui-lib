@@ -37,7 +37,7 @@ module.exports = {
         chunkFilename: '[id].js',
         libraryTarget: 'umd',
         libraryExport: 'default',
-        library: 'UILIBDEMO',
+        library: 'UILIB',
         umdNamedDefine: true,
         globalObject: "typeof self !== 'undefined' ? self : this"
     },

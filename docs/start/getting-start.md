@@ -1,10 +1,10 @@
 # 快速上手
 
-本节将介绍如何在项目中使用 ui-lib-demo
+本节将介绍如何在项目中使用 ui-lib
 
-## 引入 ui-lib-demo
+## 引入 ui-lib
 
-你可以引入整个 ui-lib-demo，或是根据需要仅引入部分组件。
+你可以引入整个 ui-lib，或是根据需要仅引入部分组件。
 
 ### 完整引入
 
@@ -12,17 +12,17 @@
 
 ```js
 import Vue from 'vue'
-import UILibDemo from 'ui-lib-demo'
+import UILib from 'ui-lib'
 import App from './App.vue'
 
-Vue.use(UILibDemo, { zIndex: 5000 })
+Vue.use(UILib, { zIndex: 5000 })
 
 new Vue({
     render: h => h(App)
 }).$mount('#app')
 ```
 
-以上代码便完成了 ui-lib-demo 的引入。
+以上代码便完成了 ui-lib 的引入。
 
 ## 按需引入
 
@@ -44,7 +44,7 @@ module.exports = {
         [
             'import',
             {
-                libraryName: 'ui-lib-demo'
+                libraryName: 'ui-lib'
             }
         ]
     ]
@@ -53,4 +53,4 @@ module.exports = {
 
 ## 开始使用
 
-至此，一个基于 Vue 和 ui-lib-demo 的开发环境已经搭建完毕，现在就可以编写代码了。各个组件的使用方法请参阅它们各自的文档。
+至此，一个基于 Vue 和 ui-lib 的开发环境已经搭建完毕，现在就可以编写代码了。各个组件的使用方法请参阅它们各自的文档。

@@ -25,9 +25,9 @@ export default Object.keys(components).map(key => ({
             format: 'es',
             file: getOutFile(components[key], 'es'),
             paths(id) {
-                if (/^ui-lib-demo\/packages/.test(id)) {
-                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/')
-                    return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/')
+                if (/^ui-lib\/packages/.test(id)) {
+                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
+                    return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                 }
             }
         },
@@ -36,9 +36,9 @@ export default Object.keys(components).map(key => ({
             file: getOutFile(components[key], 'lib'),
             exports: 'named',
             paths(id) {
-                if (/^ui-lib-demo\/packages/.test(id)) {
-                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/')
-                    return id.replace('ui-lib-demo/packages/', 'ui-lib-demo/lib/')
+                if (/^ui-lib\/packages/.test(id)) {
+                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
+                    return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                 }
             }
         }
@@ -53,6 +53,6 @@ export default Object.keys(components).map(key => ({
         esbuild()
     ],
     external(id) {
-        return /^vue/.test(id) || /^ui-lib-demo/.test(id) || deps.some(k => new RegExp('^' + k).test(id))
+        return /^vue/.test(id) || /^ui-lib/.test(id) || deps.some(k => new RegExp('^' + k).test(id))
     }
 }))

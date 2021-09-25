@@ -13,7 +13,7 @@ export default {
     name: 'BaseStar',
     methods: {
         starGithub() {
-            window.open('http://github.com/saqqdy/ui-lib-demo')
+            window.open('http://github.com/saqqdy/ui-lib')
         }
     }
 }
