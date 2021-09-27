@@ -59,7 +59,7 @@ if [[ $m != '' ]]; then
 
     <script>
     export default {
-        name: "Wl'$first$second'",
+        name: "Ui'$first$second'",
         data: () => ({
             //
         }),
