@@ -16,7 +16,10 @@ const defaultOpt = {
 }
 
 /**
- * @param opt
+ * box
+ *
+ * @param {object} opt 参数配置
+ * @returns {object} instance
  */
 export default function box(opt) {
     const vueConstructor = Vue.extend(Object.assign({ router: this.$router, store: this.$store }, tmp))
@@ -30,10 +33,10 @@ export default function box(opt) {
     Vue.nextTick(() => {
         instance.visible = true
     })
-    Vue.$plugin.push({
+    Vue.$plugins.push({
         name: 'PluginBox',
         id: instance._uid,
-        instance: instance
+        instance
     })
 
     return instance

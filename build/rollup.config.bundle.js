@@ -8,10 +8,10 @@ import pkg from '../package.json'
 
 const deps = Object.keys(pkg.dependencies)
 
-const noWlPrefixFile = /(utils|style|hooks|locale)/
+const noPrefixFile = /(utils|style|hooks|locale)/
 const getOutFile = (name, dir = 'lib') => {
     const compName = name.split('/')[1]
-    if (noWlPrefixFile.test(name)) {
+    if (noPrefixFile.test(name)) {
         return `${dir}/${compName}.js`
     }
     return `${dir}/${compName}.js`
@@ -25,7 +25,7 @@ export default [
             file: 'lib/index.esm.js',
             paths(id) {
                 if (/^ui-lib\/packages/.test(id)) {
-                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
+                    if (noPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                     return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                 }
             }

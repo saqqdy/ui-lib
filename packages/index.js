@@ -1,7 +1,6 @@
 import { version } from '../package.json'
 import Box from './box'
 import Button from './button'
-import DesignList from './design-list'
 
 // import directive from '../src/directive';
 // import filters from '../src/filters';
@@ -10,7 +9,6 @@ import DesignList from './design-list'
 const install = function (Vue, opts = {}) {
     Vue.component(Box.name, Box)
     Vue.component(Button.name, Button)
-    Vue.component(DesignList.name, DesignList)
 
     Vue.prototype.$UILIB = {
         size: opts.size || '',
@@ -32,6 +30,5 @@ export default {
     version,
     install,
     Box,
-    Button,
-    DesignList
+    Button
 }

@@ -9,10 +9,10 @@ import pkg from '../package.json'
 const components = require('../components.json')
 const deps = Object.keys(pkg.dependencies)
 
-const noWlPrefixFile = /(utils|style|hooks)/
+const noPrefixFile = /(utils|style|hooks)/
 const getOutFile = (name, dir = 'lib') => {
     const compName = name.split('/')[1]
-    if (noWlPrefixFile.test(name)) {
+    if (noPrefixFile.test(name)) {
         return `${dir}/${compName}.js`
     }
     return `${dir}/${compName}.js`
@@ -26,7 +26,7 @@ export default Object.keys(components).map(key => ({
             file: getOutFile(components[key], 'es'),
             paths(id) {
                 if (/^ui-lib\/packages/.test(id)) {
-                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
+                    if (noPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                     return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                 }
             }
@@ -37,7 +37,7 @@ export default Object.keys(components).map(key => ({
             exports: 'named',
             paths(id) {
                 if (/^ui-lib\/packages/.test(id)) {
-                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
+                    if (noPrefixFile.test(id)) return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                     return id.replace('ui-lib/packages/', 'ui-lib/lib/')
                 }
             }

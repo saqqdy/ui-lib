@@ -1,5 +1,5 @@
 <template>
-    <button class="wl-button" :type="type">
+    <button class="ui-button" :type="type">
         <slot></slot>
         <text></text>
     </button>
@@ -7,7 +7,7 @@
 <script>
 import { nextIndex } from 'ui-lib/packages/utils/nextIndex'
 export default {
-    name: 'WlButton',
+    name: 'UiButton',
     props: {
         type: String,
         disabled: Boolean
