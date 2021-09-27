@@ -7,12 +7,12 @@ const TerserPlugin = require('terser-webpack-plugin')
 const config = require('./config')
 let plugins = [new ProgressBarPlugin(), new VueLoaderPlugin()],
     publicPath = process.env.PUBLIC_PATH || ''
-if (process.env.ANALAYZ_REPORT) plugins.push(new BundleAnalyzerPlugin())
-if (Boolean(process.env.WEBPACK_DEV_SERVER)) publicPath = 'https://127.0.0.1:9000' + publicPath
+if (process.env.ANALAYZ_REPORT === 'true') plugins.push(new BundleAnalyzerPlugin())
+if (process.env.WEBPACK_DEV_SERVER) publicPath = 'https://127.0.0.1:9000' + publicPath
 // __webpack_public_path__ = publicPath;
 module.exports = {
     mode: 'production',
-    watch: Boolean(process.env.BUILD_WATCH || false),
+    watch: process.env.BUILD_WATCH === 'true',
     entry: {
         app: ['./packages/index.js']
     },
@@ -45,7 +45,7 @@ module.exports = {
         children: false
     },
     optimization: {
-        minimize: false, // !Boolean(process.env.BUILD_WATCH || false),
+        minimize: false,
         minimizer: [
             new TerserPlugin({
                 test: /\.js(\?.*)?$/i

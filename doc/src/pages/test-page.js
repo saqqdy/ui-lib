@@ -6,6 +6,9 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import styles from './test-page.module.css'
 import HomepageFeatures from '../components/HomepageFeatures'
 
+/**
+ *
+ */
 export default function Home() {
     const { siteConfig } = useDocusaurusContext()
     return (

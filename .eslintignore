@@ -1,5 +1,6 @@
 lib
 dist
 coverage
+examples
 *.bak
 *_bak

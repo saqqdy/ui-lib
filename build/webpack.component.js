@@ -8,7 +8,7 @@ const Components = require('../components.json')
 const config = require('./config')
 let plugins = [new ProgressBarPlugin(), new VueLoaderPlugin()],
     publicPath = process.env.PUBLIC_PATH || ''
-if (process.env.ANALAYZ_REPORT) plugins.push(new BundleAnalyzerPlugin())
+if (process.env.ANALAYZ_REPORT === 'true') plugins.push(new BundleAnalyzerPlugin())
 
 module.exports = {
     mode: 'production',

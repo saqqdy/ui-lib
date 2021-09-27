@@ -33,6 +33,9 @@ const plugins = [
     cssnext({ browsers: ['last 1 version'] })
 ]
 
+/**
+ *
+ */
 function compile() {
     return src('./packages/style/*.less')
         .pipe(less())
