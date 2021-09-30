@@ -34,7 +34,9 @@ const plugins = [
 ]
 
 /**
+ * compile
  *
+ * @returns {object} pipe result
  */
 function compile() {
     return src('./packages/style/*.less')
