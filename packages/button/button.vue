@@ -6,6 +6,7 @@
 </template>
 <script>
 import { nextIndex } from 'ui-lib/packages/utils/nextIndex'
+
 export default {
     name: 'UiButton',
     props: {

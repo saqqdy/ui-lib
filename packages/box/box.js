@@ -1,7 +1,7 @@
-import Vue from 'vue'
+import Vue, { nextTick } from 'vue'
 import tmp from './box.vue'
 
-const defaultOpt = {
+const defaultOption = {
     title: '提示',
     width: '800px',
     height: '360px',
@@ -11,7 +11,7 @@ const defaultOpt = {
     showCancel: true,
     showClose: true,
     showHeader: true,
-    showBtns: true,
+    showButton: true,
     template: null
 }
 
@@ -28,9 +28,9 @@ export default function box(opt) {
         props: {}
     })
     document.body.appendChild(instance.$el)
-    instance.options = Object.assign({}, defaultOpt, opt)
+    instance.options = Object.assign({}, defaultOption, opt)
 
-    Vue.nextTick(() => {
+    nextTick(() => {
         instance.visible = true
     })
     Vue.$plugins.push({
